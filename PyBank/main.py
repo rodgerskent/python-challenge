@@ -8,23 +8,40 @@ import csv
 # Path to collect file from resources folder
 csvpath = os.path.join('Resources', 'budget_data.csv')
 
-# Something to know that I can actually bring the file contents into Python
+# Open file for interpretation and calculations 
 with open(csvpath) as csvfile:
     csvreader = csv.reader(csvfile, delimiter=',')
-    print(csvreader)
-    print("---k----k----k----k----k----k----k------")
-
+    #print(csvreader)
     csv_header = next(csvreader)
-    print(f"CSV Header: {csv_header}")
-
-    print("These months are included in the profit analysis:")
+    count = 0
+    netprofit = 0
+    bestmonth = 0
+    worstmonth= 0
+    
+    #Loop through rows to compare and calculate    
     for row in csvreader:
-        print(row[0])
-        #months = [row[0]]
-        #for month in months
-            #print(value)
-            #print("Total Months: " + str(len(months)) + " ")
+        #print(row)
+        count = count + 1
+        monthlyprofit = int(row[1])
+        netprofit = netprofit + monthlyprofit
+        if int(row[1]) > bestmonth:
+            bestmonth = int(row[1])
+        if int(row[1]) < worstmonth:
+            worstmonth = int(row[1])
 
-    print("---k----k----k----k----k----k----k------")
 
+    #Output section     
+    print('  ')
+    print('  ')
+    print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
+    print('Financial Analysis')
+    print('----------------------------')
+    print('Total Months: ' + str(count))
+    print('Total Profit for Period: $' + str(netprofit))
+    print('Average Monthly Change: $ ... UNDER CONSTRUCTION')
+    print('Greatest Increase in Profits: $' + str(bestmonth))
+    print('Greatest Decrease in Profits: $' + str(worstmonth))
+    print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~kmr")
+    print('  ')
+    print('  ')
      
