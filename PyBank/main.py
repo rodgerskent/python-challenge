@@ -17,6 +17,10 @@ with open(csvpath) as csvfile:
     netprofit = 0
     bestmonth = 0
     worstmonth= 0
+    bestname = 'Kent'
+    worstname = 'Matthew'
+    month2month = 0
+    priormonth = 0
     
     #Loop through rows to compare and calculate    
     for row in csvreader:
@@ -24,10 +28,16 @@ with open(csvpath) as csvfile:
         count = count + 1
         monthlyprofit = int(row[1])
         netprofit = netprofit + monthlyprofit
+
+        month2month = month2month + int(row[1]) - priormonth
+        priormonth = int(row[1])
+
         if int(row[1]) > bestmonth:
             bestmonth = int(row[1])
+            bestname = str(row[0])
         if int(row[1]) < worstmonth:
             worstmonth = int(row[1])
+            worstname = str(row[0])
 
 
     #Output section     
@@ -38,9 +48,9 @@ with open(csvpath) as csvfile:
     print('----------------------------')
     print('Total Months: ' + str(count))
     print('Total Profit for Period: $' + str(netprofit))
-    print('Average Monthly Change: $ ... UNDER CONSTRUCTION')
-    print('Greatest Increase in Profits: $' + str(bestmonth))
-    print('Greatest Decrease in Profits: $' + str(worstmonth))
+    print(f'Average Monthly Change: $ ... UNDER CONSTRUCTION ...' + str(month2month/count))
+    print(f'Greatest Increase in Profits: $' + str(bestmonth) + ' in ' + bestname)
+    print(f'Greatest Decrease in Profits: $' + str(worstmonth) + ' in ' + worstname)
     print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~kmr")
     print('  ')
     print('  ')
