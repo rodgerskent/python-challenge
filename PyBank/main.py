@@ -15,12 +15,18 @@ with open(csvpath) as csvfile:
     csv_header = next(csvreader)
     count = 0
     netprofit = 0
-    bestmonth = 0
     worstmonth= 0
-    bestname = 'Kent'
     worstname = 'Matthew'
+    
+    # Counters for average monthly gain or loss
     month2month = 0
     priormonth = 0
+       
+    # Counters for greatest gain
+    greatestname = 'Kent'
+    greatestgain = 0
+    greatestprior = 0
+    greatestaward = 0
     
     #Loop through rows to compare and calculate    
     for row in csvreader:
@@ -30,19 +36,38 @@ with open(csvpath) as csvfile:
         netprofit = netprofit + monthlyprofit
 
         if count == 1:
+            # Average Counters
             month2month = 0
             priormonth = int(row[1])
-        
+            
+            # Greatest Counters
+            greatestprior = int(row[1])
+            greatestgain = 0
+            greatestaward = 0
+
+            # Worst Counters
+            worstprior = int(row[1])
+            worstgain = 0
+            worstaward = 0
+
         if count >1:
             month2month = month2month + int(row[1]) - priormonth
             priormonth = int(row[1]) 
-            
-        if int(row[1]) > bestmonth:
-            bestmonth = int(row[1])
-            bestname = str(row[0])
-        if int(row[1]) < worstmonth:
-            worstmonth = int(row[1])
-            worstname = str(row[0])
+
+        if count >1: 
+            greatestgain = int(row[1]) - greatestprior 
+            greatestprior = int(row[1])
+            if greatestgain > greatestaward:
+                greatestaward = greatestgain
+                greatestname = str(row[0])
+                                
+
+        if count >1: 
+            worstgain = int(row[1]) - worstprior 
+            worstprior = int(row[1])
+            if worstgain < worstaward:
+                worstaward = worstgain
+                worstname = str(row[0])
 
     #Output section     
     print('  ')
@@ -53,8 +78,8 @@ with open(csvpath) as csvfile:
     print('Total Months: ' + str(count))
     print('Total Profit for Period: $' + str(netprofit))
     print(f'Average Monthly Change: $' + str(month2month/(count-1)))
-    print(f'Greatest Increase in Profits: $' + str(bestmonth) + ' in ' + bestname)
-    print(f'Greatest Decrease in Profits: $' + str(worstmonth) + ' in ' + worstname)
+    print(f'Greatest Increase in Profits: $' + str(greatestaward) + ' in ' + greatestname)
+    print(f'Greatest Decrease in Profits: $' + str(worstaward) + ' in ' + worstname)
     print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~kmr")
     print('  ')
     print('  ')
