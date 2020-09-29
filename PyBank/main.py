@@ -29,16 +29,20 @@ with open(csvpath) as csvfile:
         monthlyprofit = int(row[1])
         netprofit = netprofit + monthlyprofit
 
-        month2month = month2month + int(row[1]) - priormonth
-        priormonth = int(row[1])
-
+        if count == 1:
+            month2month = 0
+            priormonth = int(row[1])
+        
+        if count >1:
+            month2month = month2month + int(row[1]) - priormonth
+            priormonth = int(row[1]) 
+            
         if int(row[1]) > bestmonth:
             bestmonth = int(row[1])
             bestname = str(row[0])
         if int(row[1]) < worstmonth:
             worstmonth = int(row[1])
             worstname = str(row[0])
-
 
     #Output section     
     print('  ')
@@ -48,7 +52,7 @@ with open(csvpath) as csvfile:
     print('----------------------------')
     print('Total Months: ' + str(count))
     print('Total Profit for Period: $' + str(netprofit))
-    print(f'Average Monthly Change: $ ... UNDER CONSTRUCTION ...' + str(month2month/count))
+    print(f'Average Monthly Change: $' + str(month2month/(count-1)))
     print(f'Greatest Increase in Profits: $' + str(bestmonth) + ' in ' + bestname)
     print(f'Greatest Decrease in Profits: $' + str(worstmonth) + ' in ' + worstname)
     print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~kmr")
