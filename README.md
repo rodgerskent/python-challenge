@@ -1,1 +1,3 @@
 # python-challenge
+Please see attached. Primary solution is based on runnning for loops and counters. I have to believe there is some way to take the csv file and write it into a list or dictionary and then run metrics off the lists or dictionary. That said, I could not figure it out. 
+As of Tuesday evening, I have no clue how to take my results as represented as printed text in a terminal and write them into a txt file. I have seen a number of different examples on the web but was unable to apply any of them to my script. I imagine it isn't that hard, i.e. I imagine I am missing something really basic here. TA appointment on Wednesday to see if that will get me over the hurdle. 
