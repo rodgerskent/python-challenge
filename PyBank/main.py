@@ -83,4 +83,16 @@ with open(csvpath) as csvfile:
     print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~kmr")
     print('  ')
     print('  ')
-     
+
+    outputtext = ((f'Average Monthly Change: $' + str(month2month/(count-1)))
+
+    # Specify the file to write to
+    output_path = os.path.join('Analysis', 'PyBankKMR.txt')
+
+    # Open the file using "write" mode. Specify the variable to hold the contents
+    outF.open('PyBankKMR.txt', 'w')
+
+    # Write
+    outf.write(outputtext)
+
+    outF.close()
