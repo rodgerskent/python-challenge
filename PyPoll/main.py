@@ -69,4 +69,12 @@ with open(csvpath) as csvfile:
     print(' ')
     print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~kmr')
 
-
+    output=(f'Election Results')
+    
+    print(output)
+    
+    # Specify the file to write to
+    output_path = os.path.join('Analysis', 'PyPollKMR.txt')
+    #Open the output file to be written to as a text file; then write
+    with open(output_path, "w") as txt_file:
+        txt_file.write(output)
