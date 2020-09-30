@@ -1,7 +1,8 @@
-#Rodgers PyBank
+#Rodgers PyBank September 2020
 
 #Import the operating sytem
 import os
+
 #Import the csv module
 import csv
 
@@ -11,41 +12,37 @@ csvpath = os.path.join('Resources', 'budget_data.csv')
 # Open file for interpretation and calculations 
 with open(csvpath) as csvfile:
     csvreader = csv.reader(csvfile, delimiter=',')
+    
     #print(csvreader)
     csv_header = next(csvreader)
     count = 0
     netprofit = 0
-    worstmonth= 0
-    worstname = 'Matthew'
-    
+        
     # Counters for average monthly gain or loss
     month2month = 0
     priormonth = 0
        
-    # Counters for greatest gain
-    greatestname = 'Kent'
-    greatestgain = 0
-    greatestprior = 0
-    greatestaward = 0
-    
+    # Counters for greatest/worst gain/loss
+    greatestname = 'Winner'
+    worstname = 'Losser'
+       
     #Loop through rows to compare and calculate    
     for row in csvreader:
-        #print(row)
         count = count + 1
         monthlyprofit = int(row[1])
         netprofit = netprofit + monthlyprofit
 
         if count == 1:
-            # Average Counters
+            # Average monthly change counters
             month2month = 0
             priormonth = int(row[1])
             
-            # Greatest Counters
+            # Greatest monthly change counters
             greatestprior = int(row[1])
             greatestgain = 0
             greatestaward = 0
 
-            # Worst Counters
+            # Worst monthly change counters
             worstprior = int(row[1])
             worstgain = 0
             worstaward = 0
@@ -59,8 +56,7 @@ with open(csvpath) as csvfile:
             greatestprior = int(row[1])
             if greatestgain > greatestaward:
                 greatestaward = greatestgain
-                greatestname = str(row[0])
-                                
+                greatestname = str(row[0])               
 
         if count >1: 
             worstgain = int(row[1]) - worstprior 
@@ -69,7 +65,7 @@ with open(csvpath) as csvfile:
                 worstaward = worstgain
                 worstname = str(row[0])
 
-    #Output section     
+    #Report-out section     
     print('  ')
     print('  ')
     print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
@@ -84,15 +80,5 @@ with open(csvpath) as csvfile:
     print('  ')
     print('  ')
 
-    outputtext = ((f'Average Monthly Change: $' + str(month2month/(count-1)))
-
     # Specify the file to write to
-    output_path = os.path.join('Analysis', 'PyBankKMR.txt')
-
-    # Open the file using "write" mode. Specify the variable to hold the contents
-    outF.open('PyBankKMR.txt', 'w')
-
-    # Write
-    outf.write(outputtext)
-
-    outF.close()
+    # output_path = os.path.join('Analysis', 'PyBankKMR.txt')
