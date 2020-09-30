@@ -76,7 +76,7 @@ with open(csvpath) as csvfile:
     print(f'Average Monthly Change: $' + str(month2month/(count-1)))
     print(f'Greatest Increase in Profits: $' + str(greatestaward) + ' in ' + greatestname)
     print(f'Greatest Decrease in Profits: $' + str(worstaward) + ' in ' + worstname)
-    print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~kmr")
+    print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~kmr~~~terminal")
     print('  ')
     print('  ')
 
@@ -85,13 +85,13 @@ with open(csvpath) as csvfile:
     # Specify what it is we want to output
     output=(f'~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n'
     f'Financial Analysis\n'
-    f'----------------------------'
-    f'Total Months: ${str(count)} \n'
+    f'----------------------------\n'
+    f'Total Months: {str(count)} \n'
     f'Total Profit for Period: ${str(netprofit)} \n'
     f'Average Monthly Change: ${str(month2month/(count-1))} \n'
     f'Greatest Increase in Profits: ${str(greatestaward)}  in {greatestname} \n'
     f'Greatest Decrease in Profits: ${str(worstaward)} in {worstname} \n'
-    f'~~~~~~~~~~~~~~~~~~~~~~~~~~~~kmr')
+    f'~~~~~~~~~~~~~~~~~~~~~~~~~~~~kmr~~~textfile')
         
     print(output)
     
@@ -101,4 +101,4 @@ with open(csvpath) as csvfile:
     with open(output_path, "w") as txt_file:
         txt_file.write(output)
 
-    # kmr End
+    # kmr PyBank end
