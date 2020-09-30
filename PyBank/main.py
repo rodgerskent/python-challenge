@@ -80,5 +80,24 @@ with open(csvpath) as csvfile:
     print('  ')
     print('  ')
 
+
+    # Lines to push the text information out to a text file
+    # Specify what it is we want to output
+    output=('~~~~~~~~~~~~~~~~~~~~~~~~~~~~'
+    f'Financial Analysis')
+    '----------------------------'
+    'Total Months: ' + str(count)
+    'Total Profit for Period: $' + str(netprofit)
+    f'Average Monthly Change: $' + str(month2month/(count-1))
+    f'Greatest Increase in Profits: $' + str(greatestaward) + ' in ' + greatestname
+    f'Greatest Decrease in Profits: $' + str(worstaward) + ' in ' + worstname
+    "~~~~~~~~~~~~~~~~~~~~~~~~~~~~kmr")
+        
+    print(output)
+    
     # Specify the file to write to
-    # output_path = os.path.join('Analysis', 'PyBankKMR.txt')
+    output_path = os.path.join('Analysis', 'PyBankKMR.txt')
+    # Open the output file to be written to as a text file; then write
+    with open(output_path, "w") as txt_file:
+        txt_file.write(output_path)
+
