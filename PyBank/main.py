@@ -18,11 +18,11 @@ with open(csvpath) as csvfile:
     count = 0
     netprofit = 0
         
-    # Counters for average monthly gain or loss
+    # Capture variables for average monthly gain or loss
     month2month = 0
     priormonth = 0
        
-    # Counters for greatest/worst gain/loss
+    # Capture variables for greatest/worst gain/loss
     greatestname = 'Winner'
     worstname = 'Losser'
        
@@ -65,7 +65,7 @@ with open(csvpath) as csvfile:
                 worstaward = worstgain
                 worstname = str(row[0])
 
-    #Report-out section     
+    # Terminal report-out section     
     print('  ')
     print('  ')
     print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
@@ -81,8 +81,7 @@ with open(csvpath) as csvfile:
     print('  ')
 
 
-    # Lines to push the text information out to a text file
-    # Specify what it is we want to output
+    # Text file report-out section
     output=(f'~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n'
     f'Financial Analysis\n'
     f'----------------------------\n'
@@ -97,7 +96,7 @@ with open(csvpath) as csvfile:
     
     # Specify the file to write to
     output_path = os.path.join('Analysis', 'PyBankKMR.txt')
-    #Open the output file to be written to as a text file; then write
+    # Open the output file to be written to as a text file; then write
     with open(output_path, "w") as txt_file:
         txt_file.write(output)
 

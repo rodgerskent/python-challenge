@@ -1,28 +1,31 @@
-#Rodgers PyPoll
+#Rodgers PyPoll September 2020
+
+# Import required operating system and formats
 import os
 import csv
 
+# Import the election data file
 csvpath = os.path.join('Resources', 'election_data.csv')
 with open(csvpath) as csvfile:
     csvreader = csv.reader(csvfile, delimiter=',')
     csvheader = next(csvreader)
  
-    #Build a list of candidates
+    # Build a list of candidates to ensure we know full list and format issues that may exist
     namelist = []
     for candidatexx in csvreader:
         if not candidatexx[2] in namelist: 
-            #push candidate from row[2] to namelist
             namelist.append(candidatexx[2])
     print('~~~~~~~~~~~~~~~~~~~~~~~')
     print('Candidate list ...')
     print(namelist)
     print('~~~~~~~~~~~~~~~~~~~~~~~')
     
+    # Run each line through a loop to capture votes
 with open(csvpath) as csvfile:
     csvreader = csv.reader(csvfile, delimiter=',')
     csvheader = next(csvreader)
     
-    # Stuff that needs to be set outside the for loop
+    # Capture variables
     votescast = 0
     khancounter = 0
     correycounter = 0
@@ -30,10 +33,10 @@ with open(csvpath) as csvfile:
     otooleycounter = 0
 
     for row in csvreader:
-        # First Goal ... Total Number of Votes Cast
+        # Tally votes cast
         votescast = votescast + 1
         otooleycounter = votescast - khancounter - correycounter - licounter
-        # Second Goal ... Complete list of candidates with votes
+        # Capture vote tally by candidate
         if str(row[2])== 'Khan':
             khancounter = khancounter + 1
         if str(row[2])== 'Correy':
@@ -41,7 +44,7 @@ with open(csvpath) as csvfile:
         if str(row[2])== 'Li':
             licounter = licounter + 1
         
-    # Vote percentage calculations    
+    # Tally vote percentage    
     khanpercent = khancounter / votescast
     correypercent = correycounter / votescast
     lipercent = licounter / votescast
@@ -63,11 +66,8 @@ with open(csvpath) as csvfile:
     if otooleycounter > winnervotes:
         winnervotes = otooleycounter
         winnername = 'OTooley'
-    # Really should have logic in here to deal with a tie
-         
-
-
     
+    # Terminal report-out section
     print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
     print(' ')
     print('Election Results')
@@ -84,6 +84,7 @@ with open(csvpath) as csvfile:
     print(' ')
     print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~kmr~~terminal')
 
+    # Text file report-out section
     output=(
     f'Election Results\n'
     f'------------------------------\n'
