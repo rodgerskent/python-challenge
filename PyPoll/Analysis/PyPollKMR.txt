@@ -1,0 +1,13 @@
+Election Results
+------------------------------
+Total Votes: 3521001 
+------------------------------
+Candidate Results as follows:
+Khan: 63.0 % 2218231 Votes 
+Correy: 20.0 % 704200   Votes
+Li: 14.0 %  492940 Votes
+OTooley: 3.0 % 105630 Votes
+------------------------------
+Winner Is: Khan with 2218231 Votes
+ 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~kmr~~~textfile
